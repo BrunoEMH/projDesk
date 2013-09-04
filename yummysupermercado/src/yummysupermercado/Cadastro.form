@@ -116,7 +116,7 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelImagem" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="CadastroLogo" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -195,6 +195,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="Codigo_produto">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="setUpCodigoProduto(Codigo_produto);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelNome_produto">
       <Properties>

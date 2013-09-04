@@ -3,6 +3,12 @@ package yummysupermercado;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.DocumentFilter;
 
 
 public class Cadastro extends javax.swing.JInternalFrame {
@@ -12,6 +18,29 @@ public class Cadastro extends javax.swing.JInternalFrame {
         
     }
 
+    private void setUpCodigoProduto(JTextField field) {
+        AbstractDocument document = (AbstractDocument) field.getDocument();
+        document.setDocumentFilter(new DocumentFilter() {
+
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
+                try {
+                    Integer.parseInt(string);
+                    super.insertString(fb, offset, string, attr); 
+                } catch (NumberFormatException e) {}
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                try {
+                    Integer.parseInt(text);
+                    super.replace(fb, offset, length, text, attrs); 
+                } catch (NumberFormatException e) {}
+            }
+            
+        });
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -52,6 +81,8 @@ public class Cadastro extends javax.swing.JInternalFrame {
 
         jLabelCodigo_produto.setForeground(new java.awt.Color(102, 102, 102));
         jLabelCodigo_produto.setText("Código:");
+
+        setUpCodigoProduto(Codigo_produto);
 
         jLabelNome_produto.setForeground(new java.awt.Color(102, 102, 102));
         jLabelNome_produto.setText("Produto:");
@@ -182,7 +213,7 @@ public class Cadastro extends javax.swing.JInternalFrame {
                 .addComponent(ImagemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelImagem, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(CadastroLogo, javax.swing.GroupLayout.Alignment.TRAILING))
